@@ -1,205 +1,118 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arron's Calculator</title>  
+    <title>My Portfolio</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+body {
+    font-family: sans-serif;
+    margin: 0;
+     padding: 0;
+     background-color: #000000;
+     color: #333;
+     }
+header {
+     background-color: #000000;
+     color: white;
+     padding: 20px;
+     text-align: center;
+     }
+         h1{
+         margin-bottom: 10px;
+    }
+    nav {
+        background-color: #808080;
+        padding: 10px;
+        text-align: center;
         }
-
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            transition: background 0.3s ease;
+     nav a {
+         display: inline-block;
+         margin: 0 10px;
+        padding: 5px 10px;
+         text-decoration: none;
+         color: #FFFFFF;
         }
-
-        .dark-mode {
-            background: linear-gradient(135deg, #0c0c0e, #94f5fa);
-            color: white;
+    nav a:hover {
+         background-color: #000000;
         }
-
-        .light-mode {
-            background: linear-gradient(135deg, #f0f0f0, #ffccbc);
-            color: black;
+     section {
+         padding: 20px;
+         margin: 20px;
+        background-color: lightgray;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 1);
         }
-
-        .calculator {
-            background: rgba(255, 255, 255, 0.15);
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3), -5px -5px 15px rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(15px);
-            text-align: center;
-            width: 320px;
-            transition: transform 0.3s ease-in-out;
+     #about {
+           text-align: center;
         }
-
-        .calculator:hover {
-            transform: scale(1.05);
+    #projects {
+         display: flex;
+         flex-wrap: wrap;
+         justify-content: space-around;
         }
-
-        h2 {
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-            font-size: 26px;
+     .project {
+         width: 30%;
+         margin-bottom: 20px;
+          border: 1px solid #990707;
+         padding: 10px;
+          box-sizing: border-box;
         }
-
-        input {
-            width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            border: none;
-            border-radius: 8px;
-            font-size: 18px;
-            text-align: center;
-            outline: none;
-            transition: 0.3s;
-            background: rgba(184, 143, 143, 0.4);
-            box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.2);
+      .project img {
+         max-width: 100%;
+         height: auto;
         }
-
-        input:focus {
-            background: rgba(255, 255, 255, 0.6);
-            box-shadow: inset 1px 1px 6px rgba(0, 0, 0, 0.3);
+     footer {
+        background-color: #333;
+         color: white;
+         padding: 10px;
+         text-align: center;
         }
-
-        .buttons {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        button {
-            padding: 12px;
-            font-size: 20px;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            background: linear-gradient(145deg, #1360a3, #00c6ff);
-            color: rgb(190, 31, 31);
-            transition: 0.3s ease;
-            box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
-            text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.7);
-        }
-
-        button:hover {
-            background: linear-gradient(145deg, #4c9bb1, #96b2ce);
-            transform: scale(1.1);
-            box-shadow: 0px 0px 15px rgba(0, 255, 255, 0.8);
-        }
-
-        button:active {
-            transform: scale(0.95);
-            box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.3);
-        }
-
-        #result {
-            margin-top: 15px;
-            font-size: 22px;
-            font-weight: bold;
-            text-shadow: 2px 2px 5px rgba(255, 255, 0, 0.7);
-            opacity: 0;
-            transition: opacity 0.5 ease-in-out, transform 20s;
-        }
-
-        .fade-in {
-            opacity: 1 !important;
-            transform: scale(1.1);
-        }
-
-        .theme-toggle {
-            margin-top: 15px;
-            padding: 10px;
-            font-size: 18px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            background: linear-gradient(145deg, #831414, #4b413b);
-            color: white;
-            background: url('arronmagsalay.jpg') no-repeat center center/cover;
-            transition: 0.3s ease;
-            box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .theme-toggle:hover {
-            background: linear-gradient(145deg, #3b170a, #ffa07a);
-            transform: scale(1.1);
-            box-shadow: 0px 0px 15px rgba(255, 140, 0, 0.8);
-        }
-    </style>
+</style>
 </head>
-<body class="dark-mode">
-    
-    <div class="calculator">
-        <h2>Arron's Calculator</h2>
-        <input type="number" id="num1" placeholder="Enter first number">
-        <input type="number" id="num2" placeholder="Enter second number">
-        <div class="buttons">
-            <button onclick="calculate('+')">+</button>
-            <button onclick="calculate('-')">−</button>
-            <button onclick="calculate('*')">×</button>
-            <button onclick="calculate('/')">÷</button>
-        </div>
-        <p id="result">Result: --</p>
-        <button class="theme-toggle" onclick="toggleTheme()">🌙 Toggle Theme</button>
-    </div>
-
-    <script>
-        function calculate(operator) {
-            let num1 = parseFloat(document.getElementById("num1").value);
-            let num2 = parseFloat(document.getElementById("num2").value);
-            let result;
-
-            if (isNaN(num1) || isNaN(num2)) {
-                result = "Please give complete Numbers!";
-            } else {
-                switch (operator) {
-                    case '+': result = num1 + num2; break;
-                    case '-': result = num1 - num2; break;
-                    case '*': result = num1 * num2; break;
-                    case '/': 
-                        result = num2 !== 0 ? (num1 / num2).toFixed(2) : "Cannot divide by zero!";
-                        break;
-                    default: result = "Invalid Operation";
-                }
-            }
-
-            let resultElement = document.getElementById("result");
-            resultElement.textContent = "Result: " + result;
-            resultElement.classList.add("fade-in");
-
-            setTimeout(() => {
-                resultElement.classList.remove("fade-in");
-            }, 500);
-        }
-
-        function toggleTheme() {
-            let body = document.body;
-            let currentTheme = body.classList.contains("dark-mode") ? "dark" : "light";
-            let newTheme = currentTheme === "dark" ? "light" : "dark";
-
-            body.classList.toggle("dark-mode");
-            body.classList.toggle("light-mode");
-
-            localStorage.setItem("theme", newTheme);
-        }
-
-        window.onload = function () {
-            let savedTheme = localStorage.getItem("theme") || "dark";
-            document.body.classList.toggle("light-mode", savedTheme === "light");
-            document.body.classList.toggle("dark-mode", savedTheme === "dark");
-        };
-    </script>
-
+<body>
+<header>
+    <h1>My Portfolio</h1>
+    <p>Welcome To My Portfolio</p>
+</header>
+<nav>
+    <a href='https://web.facebook.com/arron.magsalay.2024/about_overview'>Personal Info</a>
+    <a href="https://web.facebook.com/arron.magsalay.2024">Contact</a>
+    <a href='https://thumbs.dreamstime.com/z/thank-you-message-technology-light-background-thank-you-message-technology-blurred-abstract-light-background-169235650.jpg'>Back</a>
+</nav>
+<section id='about'>
+    <h2>About Me</h2>
+    <p><ins>I am Arron Khen Magsalay</ins>, I'm a BSIT student from Bulacan Agricultural State College. As a dedicated and motivated student, my goal is to leverage my academic background and skills to contribute to the field of Information Technology. I am eager to develop both my knowledge and practical abilities, aiming to apply them in real-world settings and further my career prospects. I am committed to lifelong learning and personal growth to achieve my full potential. I love playing basketball and listening to music. I dream of being a police officer but am pursuing my BSIT degree.</p>
+</section>
+<section id='projects'>
+ <h2>Projects</h2>
+<div class='project'>
+     <a href="file:///C:/Users/MAGSALAY/OneDrive/Desktop/MY%20FIRST%20WEBSITE!.html">
+    <img src='img/Project1.jpg' alt='project 1'>
+    <h3>Project 1</h3>
+     <p><b>FIRST BASIC HTML WEBSITE</b></p>
+ </a>
+</div>
+ <div class='project'>
+    <a href="file:///C:/Users/MAGSALAY/OneDrive/Desktop/panget.html">
+    <img src='img/Project2.jpg' alt='project 2'>
+    <h3>Project 2</h3>
+    <p><b>MY FIRST PORTFOLIO WEBSITE</b></p>
+ </a>
+ </div>
+ <div class='project'>
+    <a href="file:///C:/HTML%20PRACTICE%20CODE/firstwebsite.html">
+    <img src='img/Project3.jpg' alt='project 3'>
+    <h3>Project 3</h3>
+    <p><b>HTML AND CSS WEBSITE</b></p>
+ </a>
+</div>
+</section> 
+<section id="Contact">
+    <p>Email: arronmagsalay22@gmail.com</p>
+    <p>Phone: 0926-963-9070</p>
+</section>
+<footer>
+    <p>&copy;2025 My Portfolio</p>
+</footer>
 </body>
-</html> 
+</html>
